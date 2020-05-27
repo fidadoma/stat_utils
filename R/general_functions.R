@@ -151,3 +151,22 @@ prettyprint <- function(x, p = 2) {
 changescale <- function(x, oldmin, oldmax, newmin, newmax) {
   return((newmax - newmin) / (oldmax - oldmin) * (x - oldmin) + newmin)
 }
+
+
+#' Tests whether directory exist
+#' 
+#' this function can also create it, if it is specified
+#'
+#' @param pth path to directory
+#' @param should_exist whether the directory should exist. 
+#'
+#' @return
+#' @export
+test_dir <- function(pth,should_exist = F) {
+  if(!dir.exists(pth)) {
+    if(should_exist) {
+      stop(sprintf("Directory %s should exist!"))
+    }
+    dir.create(pth, recursive = T)
+  }
+}
