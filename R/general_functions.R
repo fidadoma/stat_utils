@@ -170,3 +170,24 @@ test_dir <- function(pth,should_exist = F) {
     dir.create(pth, recursive = T)
   }
 }
+
+#' Download files from OSF using osfr package
+#'
+#' We need to connect to OSF before using this function
+#'
+#' @param df data frame obtained using osf_ls_files() from osfr package
+#' @param local_data_pth path, where should be the files downloaded  
+#' @param should_overwrite boolean, whether we should overwrite files in our local directory
+#'
+#' @return
+#' @export
+#'
+download_files <- function(df, local_data_pth, should_overwrite = T) {
+  # we need to set correct class as the current version of osfr does not works with dplyr properly
+  class(df) <- c("osf_tbl_file","osf_tbl", class(df)) 
+  df %>% 
+    rowwise() %>% 
+    do(osf_retrieve_file(.$id) %>% 
+         osf_download(path = file.path(local_data_pth, .$name), 
+                      overwrite = should_overwrite))
+}
