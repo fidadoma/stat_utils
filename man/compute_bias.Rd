@@ -26,5 +26,5 @@ Bias correction currently works only for C estimate of bias
 \examples{
 compute_bias(.4,.8)
 compute_bias(.2,.7, type = "lnB")
-compute_bias(.4, 1, should_correct = T)
+compute_bias(.4, 1, should_correct = TRUE)
 }

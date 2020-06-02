@@ -23,5 +23,5 @@ Uses traditional formula
 }
 \examples{
 compute_dprime(.4,.8)
-compute_dprime(.4, 1, should_correct = T)
+compute_dprime(.4, 1, should_correct = TRUE)
 }
