@@ -60,10 +60,11 @@ create.time.measure <- function(n) {
 #' Update estimation of remaining time. We should call this method after one item was computed.
 #'
 #' @param object initialized time measure object
+#' @param ... this is not used, only for compatibilty issues
 #'
 #' @author Filip Dechterenko
 #' @export
-update.tm <- function(object) {
+update.tm <- function(object, ...) {
   object$elapsed <- proc.time() - object$tstart
   object$elapsed <- object$elapsed[3]
   object$complete <- object$complete + 1
@@ -75,10 +76,11 @@ update.tm <- function(object) {
 #' Prints remaining time of computation. First \code{update.tm} should be called
 #'
 #' @param x initialized time measure object
+#' @param ... this is not used, only for compatibilty issues
 #'
 #' @author Filip Dechterenko
 #' @export
-print.tm <- function(x) {
+print.tm <- function(x, ...) {
   eta <- with(x, elapsed / complete * (n - complete))
   cat(sprintf("   time=%8.3f ETA=%8.3f s (%.1f%%).\n", tm$elapsed, eta, x$complete / x$n * 100))
 }

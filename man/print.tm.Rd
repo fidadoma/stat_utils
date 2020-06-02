@@ -4,10 +4,12 @@
 \alias{print.tm}
 \title{Prints remaining time of computation}
 \usage{
-\method{print}{tm}(x)
+\method{print}{tm}(x, ...)
 }
 \arguments{
 \item{x}{initialized time measure object}
+
+\item{...}{this is not used, only for compatibilty issues}
 }
 \description{
 Prints remaining time of computation. First \code{update.tm} should be called

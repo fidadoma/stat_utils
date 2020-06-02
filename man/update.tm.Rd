@@ -4,10 +4,12 @@
 \alias{update.tm}
 \title{Update estimation of remaining time.}
 \usage{
-\method{update}{tm}(object)
+\method{update}{tm}(object, ...)
 }
 \arguments{
 \item{object}{initialized time measure object}
+
+\item{...}{this is not used, only for compatibilty issues}
 }
 \description{
 Update estimation of remaining time. We should call this method after one item was computed.
