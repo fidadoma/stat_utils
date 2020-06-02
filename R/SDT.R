@@ -29,7 +29,7 @@ compute_FA_from_dprime <- function(d,H) {
 #' @export
 #' @examples
 #' compute_dprime(.4,.8)
-#' compute_dprime(.4, 1, should_correct = T)
+#' compute_dprime(.4, 1, should_correct = TRUE)
 compute_dprime <- function(H,FA,should_correct = F, max_d=4) {
   stopifnot(H >= 0 & H <= 1)
   stopifnot(FA >= 0 & FA <= 1)
@@ -57,7 +57,7 @@ compute_dprime <- function(H,FA,should_correct = F, max_d=4) {
 #' @examples
 #' compute_bias(.4,.8)
 #' compute_bias(.2,.7, type = "lnB")
-#' compute_bias(.4, 1, should_correct = T)
+#' compute_bias(.4, 1, should_correct = TRUE)
 compute_bias <- function(H,FA, type = "C",should_correct = F, max_bias=4) {
   stopifnot(H >= 0 & H <= 1)
   stopifnot(FA >= 0 & FA <= 1)
