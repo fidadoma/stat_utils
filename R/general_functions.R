@@ -179,17 +179,27 @@ test_dir <- function(pth,should_exist = F) {
 #'
 #' @param df data frame obtained using osf_ls_files() from osfr package
 #' @param local_data_pth path, where should be the files downloaded  
-#' @param should_overwrite boolean, whether we should overwrite files in our local directory
+#' @param should_overwrite DEPRECATED - boolean, whether we should overwrite files in our local directory, use conflict_type
+#' @param conflicts_type conflicts parameter for osf_download function
 #'
 #' @return
 #' @export
 #'
-download_files <- function(df, local_data_pth, should_overwrite = T) {
+download_files <- function(df, local_data_pth, should_overwrite = T, conflicts_type = "overwrite") {
   # we need to set correct class as the current version of osfr does not works with dplyr properly
   class(df) <- c("osf_tbl_file","osf_tbl", class(df)) 
-  df %>% 
-    rowwise() %>% 
-    do(osf_retrieve_file(.$id) %>% 
-         osf_download(path = file.path(local_data_pth, .$name), 
-                      overwrite = should_overwrite))
+  if (should_overwrite == T) {
+    df %>% 
+      rowwise() %>% 
+      do(osf_retrieve_file(.$id) %>% 
+           osf_download(path = file.path(local_data_pth, .$name), 
+                        conflicts = "overwrite"))    
+  } else {
+    df %>% 
+      rowwise() %>% 
+      do(osf_retrieve_file(.$id) %>% 
+           osf_download(path = file.path(local_data_pth, .$name), 
+                        conflicts = conflicts_type))    
+  }
+
 }
