@@ -7,5 +7,5 @@ Author: Filip Dechterenko
 Maintainer: Filip Dechterenko <filip.dechterenko@gmail.com>
 Description: Collection of tools commonly used in the analysis. 
 License: GPL-3
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Encoding: UTF-8
