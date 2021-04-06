@@ -192,13 +192,13 @@ download_files <- function(df, local_data_pth, should_overwrite = T, conflicts_t
     df %>% 
       rowwise() %>% 
       do(osf_retrieve_file(.$id) %>% 
-           osf_download(path = file.path(local_data_pth, .$name), 
+           osf_download(path = local_data_pth, 
                         conflicts = "overwrite"))    
   } else {
     df %>% 
       rowwise() %>% 
       do(osf_retrieve_file(.$id) %>% 
-           osf_download(path = file.path(local_data_pth, .$name), 
+           osf_download(path = local_data_pth, 
                         conflicts = conflicts_type))    
   }
 
